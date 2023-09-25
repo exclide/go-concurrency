@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"sync"
-	"time"
 )
 
 func generator(done <-chan interface{}, ints ...int) <-chan int {
@@ -47,11 +46,6 @@ func fanIn(done <-chan interface{}, chans ...<-chan int) <-chan int {
 	}()
 
 	return joined
-}
-
-func slowFunc(ch <-chan interface{}) <-chan interface{} {
-	time.Sleep(3)
-	return ch
 }
 
 func main() {
